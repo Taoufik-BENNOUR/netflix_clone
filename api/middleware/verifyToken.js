@@ -10,6 +10,6 @@ exports.isAuth = (req,res,next) =>{
             next()
         })
     }else{
-        res.status(500).json("You are not authenticated")
+        res.status(401).json("You are not authenticated")
     }
 }
