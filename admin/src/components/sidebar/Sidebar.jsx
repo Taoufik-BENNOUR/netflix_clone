@@ -8,10 +8,10 @@ const Sidebar = () => {
     <div className='sidebar'>
         <div className="sidebarWrapper">
             {sidebarData?.map((menu,i)=>(
-            <div className="sidebarMenu">
+            <div key={i} className="sidebarMenu">
             <h3 className="sidebarTitle" >{menu.menuTitle}</h3>
-            {menu?.menuItems.map(item=>
-                <ul className='sidebarItems' >
+            {menu?.menuItems.map((item,i)=>
+                <ul key={i} className='sidebarItems' >
                         <Link className='link' to={item?.path}>
                             <li className='sidebarItem'>
                                 <item.icon/>{item.title}

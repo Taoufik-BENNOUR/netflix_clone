@@ -9,13 +9,17 @@ const WidgetLg = ({title}) => {
     <>
         <span className="widgetTitle">{title}</span>
         <table className='widgetTable'>
+            <thead>
             <tr className="widgetTr">
                 <th className="widgetTh">Cutomer</th>
                 <th className="widgetTh">Date</th>
                 <th className="widgetTh">Amount</th>
                 <th className="widgetTh">Status</th>
             </tr>
-            {users.map(el=>
+            </thead>
+            {users.map((el,i)=>
+            <tbody key={i}>
+
                             <tr className="widgetTr">
                             <td className="widgetUser">
                                  <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" />
@@ -25,6 +29,7 @@ const WidgetLg = ({title}) => {
                             <td className="widgetAmount">$2</td>
                             <td className="widgetStatus"><Button type={el}/></td>
                         </tr>
+            </tbody>
                 )}
         </table>
     </>

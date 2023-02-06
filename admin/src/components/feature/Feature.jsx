@@ -5,8 +5,8 @@ const Feature = () => {
     const array = [ {rate:"negative"},{rate:"positive"},{rate:"positive"}, ]
   return (
     <div className="feature">
-        {array.map(el=>
-            <div className="featureItem">
+        {array.map((el,i)=>
+            <div key={i} className="featureItem">
             <span className="featureTitle">Revenue</span>
             <div className="featureMoneyContainer">
                 <span className="featureMoney">$2,5</span>

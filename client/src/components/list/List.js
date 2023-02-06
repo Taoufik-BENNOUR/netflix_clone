@@ -25,7 +25,7 @@ const List = ({List}) => {
         <div className="wrapper">
             <FontAwesomeIcon icon={faArrowLeft} className="slider left" onClick={()=>handleClick("left")} style={{display:!isMoved&&"none"}}/>
           <div className="container" ref={list}>
-           {List.content&&List.content.map((el,i)=><ListItem index={i} content={el}/>)}
+           {List.content&&List.content.map((el,i)=><ListItem key={i} index={i} content={el}/>)}
           </div>
           <FontAwesomeIcon icon={faArrowRight} className="slider right" onClick={()=>handleClick("right")}/>
         </div>
