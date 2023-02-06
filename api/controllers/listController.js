@@ -33,27 +33,27 @@ exports.deleteList = async (req,res) => {
 exports.featureList= async(req,res) => {
     const type = req.query.type
     const genre = req.query.genre
-    let List= [];
+    let list= [];
     try {
         if(type){
             if(genre){
-                List = await List.aggregate([
+                list = await List.aggregate([
                     {$match:{type:type,genre:genre}},
                     {$sample:{size:10}}
                 ])
             }else{
-                List = await List.aggregate([
+                list = await List.aggregate([
                     {$match:{type:type}},
                     {$sample:{size:10}}
                 ])
             }
 
         }else{
-            List = await List.aggregate([
+            list = await List.aggregate([
                 {$sample:{size:10}}
             ])
         }
-        res.status(200).json(List)
+        res.status(200).json(list)
         
     } catch (error) {
         res.status(500).json(error)

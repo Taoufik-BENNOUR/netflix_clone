@@ -1,6 +1,7 @@
 import { faBell, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import "./navbar.scss"
 const Navbar = () => {
   const [scrolled, setscrolled] = useState(false)
@@ -12,11 +13,11 @@ const Navbar = () => {
     <div className={scrolled?'navbar scrolled':"navbar"}>
         <div className='container'>
             <div className='left'>
-            <img src='https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png' />
-                    <span>Homepage</span>
-                    <span>Series</span>
-                    <span>Movies</span>
-                    <span>My list</span>
+            <img src='https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png' />         
+                    <Link className='link' to="/"><span>Homepage</span></Link>
+                    <Link className='link' to={"/series"}><span>Series</span></Link>
+                    <Link className='link' to={"/movies"}><span>Movies</span></Link>
+                    <Link className='link' to={"/list"}><span>List</span></Link>
             </div>
             <div className='right'>
               <FontAwesomeIcon icon={faSearch} className="faMenu" />

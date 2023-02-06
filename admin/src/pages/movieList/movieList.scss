@@ -1,0 +1,28 @@
+.movieList{
+    flex: 4;
+    .tableUsername{
+        display: flex;
+        align-items: center;
+        img{
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+    }
+    .userListEdit{
+        background-color:#B4C586 ;
+        color: darkgreen;
+        border: none;
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .userListDelete{
+        color: darkgoldenrod;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+}

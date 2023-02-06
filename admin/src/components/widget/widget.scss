@@ -1,0 +1,97 @@
+.widget{
+    -webkit-box-shadow: 0px 0px 25px -15px rgba(0,0,0,0.9);
+    -moz-box-shadow: 0px 0px 25px -15px rgba(0,0,0,0.9);
+    box-shadow: 0px 0px 25px -15px rgba(0,0,0,0.9);
+    padding: 20px;
+    &.small {
+        flex: 1;
+        margin-right: 20px;
+        .widgetTitle{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .widgetList{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            .widgetListItems{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 20px 0px;
+                img{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                .widgetUserContainer{
+                    display: flex;
+                    flex-direction: column;
+                }
+                .wdigetButton{
+                    display: flex;
+                    align-items: center;
+                    border: none;
+                    cursor: pointer;
+                    padding: 5px;
+                    background: var(--button-color);
+                }
+            }
+        }
+      }
+    &.large {
+            flex: 3;
+        .widgetTitle{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .widgetTable{
+            width: 100%;
+            border-spacing: 20px;
+            .widgetTr{
+                .widgetTh{
+                    text-align: left;
+                }
+                    .widgetUser{
+                        display: flex;
+                        align-items: center;
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                        .widgetUsername{
+                            margin-left: 10px;
+                        }
+                    }
+                    .widgetDate,.widgetAmount{
+                        font-weight: 300;
+                    }
+            }
+            .widgetButton{
+                padding: 5px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                width: 80px;
+                &.Approved{
+                    background-color:#B4C586 ;
+                    color: darkgreen;
+                }
+                &.Pending{
+                    background-color:#F7CB73;
+                    color: darkgoldenrod;
+                }
+                &.Declined{
+                    background-color: #727C85;
+                    color: darkgray;
+                }
+            }
+        }
+
+
+      }
+    
+}

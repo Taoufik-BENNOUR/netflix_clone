@@ -1,0 +1,18 @@
+:root{
+    --main-color:rgb(229, 9, 20);
+    --button-color:rgba(255, 0, 0, 0.151);   
+
+}
+.app{
+    .container{
+        // background: url("../public/images/bg-image.png");
+        display: flex;
+        margin-top: 10px;
+    }
+    .link{
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
+
+}

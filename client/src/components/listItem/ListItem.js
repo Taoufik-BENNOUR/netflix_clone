@@ -1,18 +1,38 @@
 import { faAdd, faPlay, faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
 import "./listItem.scss"
 
-const ListItem = ({index}) => {
+const ListItem = ({index,content}) => {
   const [isHovered, setisHovered] = useState(false);
-  const trailer = "https://imdb-video.media-imdb.com/vi2959588889/1434659607842-pgv4ql-1596404706743.mp4?Expires=1674500739&Signature=dwrS7gCX4q7iYB74NO9wyFKN14vtTli-cNo9I32klEviLxatnFc35SVK~C6DsdOmjPKQKuAHCU8MtmWurlWJeB5KEy0-IP95NOsDQdf~E3bv0dChvopN9yU4vcPxwTaU9IJiQ6qAuDK31bmBoKUmn0sj9Ccqz6WdQVxXIZOuYgRLCHxZg94Qtukqnt5Rzp8wP-DKPTNARFTD7gB7wCHQoA2zzFBM1FT1NT1kg9IShNz12fEHa83T0zEmEfPL83ipFG1vQtaOzRw0cujOwbN9P6U1TJx5TRBwrWv6Jmd8qSFgCZiZRmX50uVwANE6JQevbPB6clrdUPHyPBW6PkgsPQ__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA"
-
+  const [movie, setmovie] = useState(null)
+  const navigate = useNavigate();
+  
+  // function handleClick() {
+  //   navigate("/watch",{state:movie})
+  // }
+  useEffect(() => {
+    const fetchMovie = async()=>{
+      try {
+        const response = await axios.get(`/movie/${content}`)
+        setmovie(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchMovie()
+}, [content])
   return (
+    // <span onClick={handleClick}>
+    <Link to={"/watch"} state={movie}>
     <div className='listItem' style={{left:isHovered&&index*225-50+index*2.5}} onMouseEnter={()=>setisHovered(true)} onMouseLeave={()=>setisHovered(false)}>
-      <img src="https://m.media-amazon.com/images/M/MV5BYjI3NDU0NzMtOTc5ZS00MTdiLWExZjAtMjk1MjcwOWQ0YTA0XkEyXkFqcGdeQW1pYnJ5YW50._V1_.jpg" alt=""/>
+      <img src={movie?.image} alt=""/>
       {isHovered &&
       <>
-    <video className="video" src={trailer} autoPlay={true} loop />
+    <video className="video" src={movie?.trailer} autoPlay={true} loop muted/>
+
       <div className="itemInfo">
         <div className="icons">
           <FontAwesomeIcon className="icon" icon={faAdd} />
@@ -23,19 +43,21 @@ const ListItem = ({index}) => {
       </div>
       <div className="itemInfoTop">
         <span>1h 14min</span>
-        <span>+16</span>
-        <span>1999</span>
+        <span>+{movie?.limit}</span>
+        <span>{movie?.year}</span>
       </div>
       <div className="desc">
-      WARNING in src\components\listItem\ListItem.js
+      {movie?.description}
       </div>
       <div className="genre">
-        Action
+        {movie?.genre}
       </div>
       </>
       }
 
     </div>
+      </Link>
+    // </span>
   )
 }
 

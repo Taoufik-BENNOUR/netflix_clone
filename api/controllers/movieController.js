@@ -66,20 +66,20 @@ exports.getMovies = async(req,res) => {
 }
 exports.featureMovie = async(req,res) => {
     const type = req.query.type
-    let movie;
+    let movies;
     try {
         if(type==="series"){
-            movie = await Movie.aggregate([
+            movies = await Movie.aggregate([
                 {$match:{isSeries:true}},
                 {$sample:{size:1}}
             ])
         }else{
-            movie = await Movie.aggregate([
+            movies = await Movie.aggregate([
                 {$match:{isSeries:false}},
                 {$sample:{size:1}}
             ])
         }
-        res.status(200).json(movie)
+        res.status(200).json(movies)
         
     } catch (error) {
         res.status(500).json(error)

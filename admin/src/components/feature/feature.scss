@@ -1,0 +1,39 @@
+.feature{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .featureItem{
+        flex: 1;
+        margin: 0px 20px;
+        padding: 5px;
+        cursor: pointer;
+        .featureTitle{
+            font-size: 20px;
+        }
+        .featureMoneyContainer{
+            margin: 10px 0px;
+            display: flex;
+            align-items: center;
+            .featureMoney{
+                font-size: 30px;
+                font-weight: bold;
+            }
+            .featureRate{
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                .featureIcon{
+                    font-size: 14px;
+                    margin-left: 5px;
+                    color: green;
+                    &.negative{
+                        color: red;
+                    }
+                }
+            }
+        }
+        .featureSubscribtion{
+            color: grey;
+        }
+    }
+}

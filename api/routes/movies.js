@@ -10,6 +10,6 @@ router.post("/",isAuth,addMovie)
 router.put("/:id",isAuth,updateMovie)
 router.delete("/:id",isAuth,deleteMovie)
 router.get("/:id",getMovie)
-router.get("/featuredMovie",featureMovie)
+router.get("/film/random",featureMovie)
 
 module.exports = router;

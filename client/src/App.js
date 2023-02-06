@@ -4,21 +4,23 @@ import Watch from "./pages/watch/Watch";
 import { useRef } from "react";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
+import {Route, Routes} from "react-router-dom"
+import List from "./components/list/List";
+
 function App() {
   const topRef = useRef(null);
 
-  const handleClick = () => {
-    topRef.current.scrollIntoView({ behavior: "smooth" });
 
-  };
   return (
-    <div className="app" ref={topRef}>
-          {/* <button className="scrollBtn" onClick={handleClick}>Scroll to Top</button> */}
-
-      <Register/>
-      {/* <Login/> */}
-      {/* <Watch/> */}
-      {/* <Home/> */}
+    <div className="app" >
+      <Routes>
+        <Route path="/register" element={<Register/>} />      
+        <Route path="/login" element={<Login/>} />      
+        <Route path="/" element={<Home/>} />      
+        <Route path="/movies" element={<Home type={"movies"} />} />      
+        <Route path="/series" element={<Home type={"series"} />} />      
+        <Route path="/watch" element={<Watch  />} />      
+      </Routes>
     </div>
   );
 }

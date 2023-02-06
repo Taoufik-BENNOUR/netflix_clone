@@ -1,0 +1,18 @@
+.movie{
+    flex: 4;
+    padding: 20px;
+    .movieTitleContainer{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .movieTitleButton{
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: var(--button-color);
+            color: red;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+}

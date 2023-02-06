@@ -15,7 +15,7 @@ connectDb()
 app.use("/api/auth",authRoute)
 app.use("/api/user",usersRoute)
 app.use("/api/movie",moviesRoute)
-app.use("/api/list",listRoute)
+app.use("/api/lists",listRoute)
 
 app.listen(process.env.PORT,()=>{
     console.log("server connected on port",process.env.PORT);
