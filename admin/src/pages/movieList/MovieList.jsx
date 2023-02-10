@@ -43,15 +43,7 @@ const MovieList = () => {
      const filtredData = data.filter(el=>el.id !== id)
      setdata(filtredData)
    }
-   const months =useMemo(()=>["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],[]) 
-useEffect(() => {
-  const fetchWeight = async () =>{
-    const response = await axios.get(`/weights?interval=${interval}`)
-    // response.data.filter(el=>el._id.userId==1).map(el=>setfirst(prev=>[...prev,{name:months[el._id.month-1],"New Users":el.totalWeight}]))
-    setfirst(response.data)
-  }
-  fetchWeight()
-}, [interval])
+
 
 
   return (
@@ -65,31 +57,8 @@ useEffect(() => {
                 checkboxSelection
                 disableSelectionOnClick
             />
+          </div>
       </div>
-      <form>
-        <select value={interval} onChange={handleIntervalChange}>
-          <option value="week">Week</option>
-          <option value="month">Month</option>
-          <option value="year">Year</option>
-        </select>
-      </form>
-      <ul>
-        {first.map((weight) => (
-          <li key={weight._id.userId + weight._id.interval}>
-            {weight._id.userId} - {weight._id.interval}: {weight.avgWeight}
-          </li>
-        ))}
-      </ul>
-      <h3 className="chartTitle">{"New User"}</h3>
-        <ResponsiveContainer width={"100%"} aspect={4/1}>
-            <LineChart data={first}>
-                <XAxis dataKey={"name"} />
-                <Line type="monotone" dataKey={"New Users"} />
-                <Tooltip/>
-                <CartesianGrid stroke="lightgrey" strokeDasharray={"5 5"} />
-            </LineChart>
-        </ResponsiveContainer>
-    </div>
   )
 }
 

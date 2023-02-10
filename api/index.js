@@ -18,50 +18,8 @@ app.use("/api/user",usersRoute)
 app.use("/api/movie",moviesRoute)
 app.use("/api/lists",listRoute)
 
-app.get('/api/weights', async(req, res) => {
-    
-    const interval = req.query.interval || 'week';
-    let groupBy;
-    if (interval === 'week') {
-      groupBy = {
-        $dateToString: { format: "%Y-%U", date: "$date" }
-      };
-    } else if (interval === 'month') {
-      groupBy = {
-        $dateToString: { format: "%Y-%m", date: "$date" }
-      };
-    } else if (interval === 'year') {
-      groupBy = {
-        $dateToString: { format: "%Y", date: "$date" }
-      };
-    }
-    try {
-        const weight =await Weight.aggregate([
-            {
-                $group: {
-                  _id: {
-                    userId: "$userId",
-                    interval: groupBy
-                  },
-                  avgWeight: { $avg: "$weight" }
-                }
-              }
-            ])
-        res.status(200).json(weight)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-    })
 
-app.post('/api/weights', async(req, res) => {
-        try {
-           const newWeight = new Weight(req.body)
-           await newWeight.save()
-            res.status(200).json(newWeight)
-        } catch (error) {
-            res.status(500).json(error)
-        }
-        })
+
 
 app.listen(process.env.PORT,()=>{
     console.log("server connected on port",process.env.PORT);
