@@ -13,7 +13,7 @@ const Home = ({type}) => {
       try {
         const response = await axios.get(`/lists${type?"?type="+type:""}${genre?"&genre="+genre:""}`,{
           headers:{
-            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOWVmNThhZDcyYWYyY2Q5YWY5ZGY1MyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3NDkyNTk2Mn0.asehUPcZsavuHeO5Kmo2TUUIdC8XzIDKxGN5zZhoLRQ"
+            token:""
           }
         })
         setlists(response.data)

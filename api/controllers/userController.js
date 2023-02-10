@@ -22,16 +22,20 @@ exports.updateUser = async(req,res)=>{
 
 
 exports.getUsers = async(req,res) => {
+  const query = req.query.new;
+
+  if (req.user.isAdmin) {
     try {
-        if(req.user.isAdmin){
-            const users =await User.find().select("-password")
-           res.status(200).json(users)
-        }else{
-            res.status(403).json("You dont have access")
-        }
-    } catch (error) {
-        res.status(500).json(error)
+      const users = query
+        ? await User.find().sort({ _id: -1 }).limit(5)
+        : await User.find();
+      res.status(200).json(users);
+    } catch (err) {
+      res.status(500).json(err);
     }
+  } else {
+    res.status(403).json("You are not allowed to see all users!");
+  }
 }
 exports.getUser = async(req,res) => {
     try {

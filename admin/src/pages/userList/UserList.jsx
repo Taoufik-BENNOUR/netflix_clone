@@ -3,9 +3,26 @@ import "./userList.scss"
 import {rows } from '../../data/userlist';
 import { DeleteOutline, EditOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from "axios"
+import token from "../../data/token.json"
+
 const UserList = () => {
-    const [data, setdata] = useState(rows)
+console.log(token)
+  const [data, setdata] = useState(rows)
+    useEffect(() => {
+        const fetchUsers = async () =>{
+          const response = await axios.get("/user?query=new",{
+            headers:{
+              token:token.token
+            }
+          })
+          console.log(response.data)
+        }
+
+        fetchUsers()
+    }, [])
+    
  const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'username', headerName: 'Username', width: 160,renderCell:(params)=>{
