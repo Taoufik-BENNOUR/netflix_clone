@@ -10,7 +10,6 @@ const WidgetSm = ({title}) => {
       try {
         const response = await axios.get("/user?new=true",{headers:{token:token.token}})
         setnewUser(response.data)
-        console.log(response.data)
       } catch (error) {
         console.log(error)
       }

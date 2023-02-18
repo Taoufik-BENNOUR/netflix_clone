@@ -48,6 +48,31 @@
                 object-fit: cover;
                 cursor: pointer;
             }
+            .profile{
+                position: relative;
+                .options{
+                    display: none;
+                    span{
+                        padding: 10px;
+                        border: 1px solid var(--main-color);
+                        cursor: pointer;
+                        &:hover{
+                            background-color: #000;
+
+                        }
+                    }
+                }
+
+            }  &:hover{
+                    .options{   
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                        right: 0;
+                        background-color: white;
+                        color: var(--main-color);            
+                }  
+              }
         }
     }
 }

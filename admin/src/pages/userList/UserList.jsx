@@ -3,12 +3,12 @@ import "./userList.scss"
 import {rows } from '../../data/userlist';
 import { DeleteOutline, EditOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from "axios"
 import token from "../../data/token.json"
+import { MovieContext } from '../../context/movieContext/MovieContext';
 
 const UserList = () => {
-console.log(token)
   const [data, setdata] = useState(rows)
     useEffect(() => {
         const fetchUsers = async () =>{
@@ -22,7 +22,8 @@ console.log(token)
 
         fetchUsers()
     }, [])
-    
+    const {movies} = useContext(MovieContext)
+    console.log(movies);
  const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'username', headerName: 'Username', width: 160,renderCell:(params)=>{
