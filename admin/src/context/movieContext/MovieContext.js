@@ -4,13 +4,13 @@ import MovieReducer from "./MovieReducer"
 const initialState = {
     movies:[],
     isLoading:false,
-    error:false
+    error:null
 }
 
 export const MovieContext = createContext(initialState)
 
 const MovieContextProvider = ({children}) => {
-    const [state, dispatch] = useReducer(MovieReducer,MovieContext)
+    const [state, dispatch] = useReducer(MovieReducer,initialState)
   return (
     <MovieContext.Provider
      value={{movies:state.movies,

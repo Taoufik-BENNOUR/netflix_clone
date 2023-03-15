@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from "axios"
 import token from "../../data/token.json"
 import { MovieContext } from '../../context/movieContext/MovieContext';
+import { getMovies } from '../../context/movieContext/apiCalls';
 
 const UserList = () => {
   const [data, setdata] = useState(rows)
@@ -22,8 +23,6 @@ const UserList = () => {
 
         fetchUsers()
     }, [])
-    const {movies} = useContext(MovieContext)
-    console.log(movies);
  const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'username', headerName: 'Username', width: 160,renderCell:(params)=>{
@@ -59,7 +58,7 @@ const UserList = () => {
           rows={data}
           columns={columns}
           pageSize={7}
-          rowsPerPageOptions={[5]}
+          rowsPerPageOptions={[7]}
           checkboxSelection
           disableSelectionOnClick
         />

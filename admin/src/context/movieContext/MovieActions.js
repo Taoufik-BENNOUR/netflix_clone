@@ -10,3 +10,16 @@ export const getMoviesFailed = (error) =>({
     payload:error
 })
 
+export const deleteMovieLoading = () =>({
+    type:"DELETE_MOVIE_LOADING"
+})
+export const deleteMovieSuccess = (id) =>({
+    type:"DELETE_MOVIE_SUCCESS",
+    payload:id
+})
+export const deleteMovieFailed = (error) =>({
+    type:"DELETE_MOVIE_FAILED",
+    payload:error
+})
+
+

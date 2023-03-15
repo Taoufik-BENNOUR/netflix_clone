@@ -8,7 +8,6 @@ token.json
 chart.json
 # testing
 /coverage
-
 # production
 /build
 

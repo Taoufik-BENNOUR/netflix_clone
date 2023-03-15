@@ -1,4 +1,4 @@
-import { BarChart, CastConnected, Feedback, LineStyle, Mail, Message, Movie, PermIdentity, Timeline, TrendingUp } from '@material-ui/icons';
+import {List, BarChart, CastConnected, Feedback, LineStyle, Mail, Message, Movie, PermIdentity, Timeline, TrendingUp } from '@material-ui/icons';
 
 const sidebarData = [
   {
@@ -35,9 +35,9 @@ const sidebarData = [
       path:"/movies"
     },
     {
-      title:"Reports",
-      icon:BarChart,
-      path:"/reports"
+      title:"Lists",
+      icon:List,
+      path:"/lists"
     },
   ]
   },

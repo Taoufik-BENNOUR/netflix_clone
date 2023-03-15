@@ -11,6 +11,7 @@ import MovieList from "./pages/movieList/MovieList";
 import Movie from "./pages/movie/Movie";
 import Login from "./pages/login/Login";
 import { AuthContext } from "./context/authContext/AuthContext";
+import NewMovie from "./pages/newMovie/NewMovie";
 
 function App() {
   const {user,loading} = useContext(AuthContext)
@@ -35,12 +36,13 @@ useEffect(() => {
         <div className="container">
         {isLoginPage ? null : <Sidebar />}
           <Routes>
-            {<>  <Route path="/" element={<><Home/></>}/>
+                <Route path="/" element={<><Home/></>}/>
                 <Route path="/users" element={<><UserList/></>} />
                 <Route path="/user/:userId" element={<User/>} />
                 <Route path="/newUser" element={<NewUser/>} />
                 <Route path="/movies" element={<MovieList/>} />
-                <Route path="/movie/:movieId" element={<Movie/>} /></>}
+                <Route path="/movie/:movieId" element={<Movie/>} />
+                <Route path="/newmovie" element={<NewMovie/>} />
               <Route path="/login" element={user? <Navigate to="/" />: <Login/>}/>
           </Routes>
         </div>
